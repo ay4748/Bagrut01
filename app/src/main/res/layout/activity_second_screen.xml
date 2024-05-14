@@ -197,17 +197,19 @@
             android:layout_weight="1">
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/rB5or1first"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="1" />
+                android:onClick="clickedhagshni"
+                android:text="5" />
 
             <RadioButton
-                android:id="@+id/radioButton4"
+                android:id="@+id/rB5or1Second"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="5" />
+                android:onClick="clickedMavoMadaim"
+                android:text="1" />
         </RadioGroup>
 
         <Space
@@ -237,7 +239,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/editTextNumber7"
+            android:id="@+id/eTSecHagGrade"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -256,17 +258,19 @@
             android:layout_weight="1">
 
             <RadioButton
-                android:id="@+id/radioButton5"
+                android:id="@+id/rB5or0first"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                android:onClick="clikedYesThird"
                 android:text="5" />
 
             <RadioButton
-                android:id="@+id/radioButton6"
+                android:id="@+id/rB5or0Second"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:checked="false"
+                android:onClick="clickedNothird"
                 android:text="0" />
         </RadioGroup>
 
@@ -276,7 +280,7 @@
             android:layout_weight="0.5" />
 
         <EditText
-            android:id="@+id/editTextText3"
+            android:id="@+id/eTSecondHagSub"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -306,6 +310,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="clickedGoThird"
             android:text="Next" />
 
         <Space
