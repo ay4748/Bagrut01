@@ -104,8 +104,8 @@ public class SecondScreen extends AppCompatActivity {
         gradeMath = Integer.parseInt(eTGradeMath.getText().toString());
         gradeEnglish = Integer.parseInt(eTGradeMath.getText().toString());
         gradeFirst = Integer.parseInt(eTGradeFirst.getText().toString());
-        gradeSecond =
-        if()
+        gradeSecond = Integer.parseInt(eTSecondGrade.getText().toString());
+
 
     }
 
