@@ -17,6 +17,9 @@ public class SecondScreen extends AppCompatActivity {
     EditText eTUnitsMath,eTGradeMath,eTUnitsEng,eTGradeEng,eTSubjectFirst,eTGradeFirst,eTSubjectSecond,eTSecondGrade,eTSecondHagSub, eTSecHagGrade;
     RadioButton rB5or0first, rB5or0Second;
     int gradeHebrew, gradeSafrut, gradeHistory, gradeEzrahut, gradeBible, gradeMath, gradeEnglish, gradeFirst, gradeSecond, gradeThird;
+    int unitsMath, unitsEngish;
+    Intent gi;
+    String name, subjectFirst, subjectSecond, subjectThird;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +27,14 @@ public class SecondScreen extends AppCompatActivity {
         setContentView(R.layout.activity_second_screen);
         initViews();
 
-        Intent gi = getIntent();
+        gi = getIntent();
+
         gradeHebrew = gi.getIntExtra("Hebrew", 1);
         gradeSafrut = gi.getIntExtra("Safrut", 1);
         gradeHistory = gi.getIntExtra("History", 1);
         gradeEzrahut = gi.getIntExtra("Ezrahut", 1);
         gradeBible = gi.getIntExtra("Bible", 1);
+        //name = gi.getStringExtra("Name", "");
 
     }
 
@@ -56,6 +61,9 @@ public class SecondScreen extends AppCompatActivity {
         rB5or0first.setVisibility(View.INVISIBLE);
         rB5or0Second.setVisibility(View.INVISIBLE);
         eTSecondHagSub.setVisibility(View.INVISIBLE);
+
+        eTSecHagGrade.setText("1");
+        eTSecondHagSub.setText("dodge");
     }
 
     public void clickedhagshni(View view)
@@ -64,6 +72,9 @@ public class SecondScreen extends AppCompatActivity {
         rB5or0first.setVisibility(View.VISIBLE);
         rB5or0Second.setVisibility(View.VISIBLE);
         eTSecondHagSub.setVisibility(View.VISIBLE);
+
+        eTSecHagGrade.setText("");
+        eTSecondHagSub.setText("");
     }
 
     public void clickedNothird(View view)
@@ -71,11 +82,18 @@ public class SecondScreen extends AppCompatActivity {
         eTSecondHagSub.setVisibility(View.INVISIBLE);
         eTSecHagGrade.setVisibility(View.INVISIBLE);
 
+        eTSecondHagSub.setText("dodge");
+        eTSecHagGrade.setText("1");
+
+
     }
 
     public void clikedYesThird(View view) {
         eTSecondHagSub.setVisibility(View.VISIBLE);
         eTSecHagGrade.setVisibility(View.VISIBLE);
+
+        eTSecondHagSub.setText("");
+        eTSecHagGrade.setText("");
     }
 
     public static boolean containsOnlyLetters(String str) {
@@ -91,7 +109,11 @@ public class SecondScreen extends AppCompatActivity {
 
     public void clickedGoThird(View view)
     {
-
+        if(checkInput())
+        {
+            Intent dodge = new Intent(this,ThirdScreen.class);
+            startActivity(dodge);
+        }
     }
 
     private boolean checkInput()
@@ -105,8 +127,38 @@ public class SecondScreen extends AppCompatActivity {
         gradeEnglish = Integer.parseInt(eTGradeMath.getText().toString());
         gradeFirst = Integer.parseInt(eTGradeFirst.getText().toString());
         gradeSecond = Integer.parseInt(eTSecondGrade.getText().toString());
+        gradeThird = Integer.parseInt(eTSecHagGrade.getText().toString());
 
+        unitsMath = Integer.parseInt(eTUnitsMath.getText().toString());
+        unitsEngish = Integer.parseInt(eTUnitsEng.getText().toString());
 
+        subjectFirst = eTSubjectFirst.getText().toString();
+        subjectSecond = eTSubjectSecond.getText().toString();
+        subjectThird = eTSecondHagSub.getText().toString();
+
+        if(unitsMath < 3 || unitsMath > 5 || unitsEngish < 3 || unitsEngish > 5)
+        {
+            Toast.makeText(this, "One or more of the units is wrong", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if(gradeMath < 0 ||gradeMath > 100 || gradeEnglish < 0 ||gradeEnglish > 100 || gradeFirst < 0 ||gradeFirst > 100 || gradeSecond < 0 ||gradeSecond > 100 || gradeThird < 0 ||gradeThird > 100)
+        {
+            Toast.makeText(this, "One or more of the grades are wrong", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if(!(containsOnlyLetters(subjectFirst) && containsOnlyLetters(subjectSecond) && containsOnlyLetters(subjectThird)))
+        {
+            Toast.makeText(this, "One or more of the subjects are wrong", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
     }
 
+    public void clickedGoToFirst(View view)
+    {
+        if(checkInput())
+        {
+            finish();
+        }
+    }
 }
