@@ -21,6 +21,9 @@ public class SecondScreen extends AppCompatActivity {
     Intent gi;
     String name, subjectFirst, subjectSecond, subjectThird;
 
+    int numHug = 1;
+    int RESULT_OK = 369;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +67,7 @@ public class SecondScreen extends AppCompatActivity {
 
         eTSecHagGrade.setText("1");
         eTSecondHagSub.setText("dodge");
+        numHug = 1;
     }
 
     public void clickedhagshni(View view)
@@ -75,6 +79,7 @@ public class SecondScreen extends AppCompatActivity {
 
         eTSecHagGrade.setText("");
         eTSecondHagSub.setText("");
+        numHug = 2;
     }
 
     public void clickedNothird(View view)
@@ -86,6 +91,8 @@ public class SecondScreen extends AppCompatActivity {
         eTSecHagGrade.setText("1");
 
 
+        numHug = 2;
+
     }
 
     public void clikedYesThird(View view) {
@@ -94,6 +101,7 @@ public class SecondScreen extends AppCompatActivity {
 
         eTSecondHagSub.setText("");
         eTSecHagGrade.setText("");
+        numHug = 3;
     }
 
     public static boolean containsOnlyLetters(String str) {
@@ -156,9 +164,25 @@ public class SecondScreen extends AppCompatActivity {
 
     public void clickedGoToFirst(View view)
     {
-        if(checkInput())
-        {
+        if(checkInput()) {
+            gi.putExtra("mathGrade", gradeMath);
+            gi.putExtra("englishGrade", gradeEnglish);
+            gi.putExtra("mathUnits", unitsMath);
+            gi.putExtra("englishUnits", unitsEngish);
+
+            gi.putExtra("subjectFirst", subjectFirst);
+            gi.putExtra("subjectSecond", subjectSecond);
+            gi.putExtra("subjectThird", subjectThird);
+
+            gi.putExtra("gradeFirst", gradeFirst);
+            gi.putExtra("gradeSecond", gradeSecond);
+            gi.putExtra("gradeThird", gradeThird);
+
+            gi.putExtra("numHug", numHug);
+
+            setResult(RESULT_OK,gi);
             finish();
+
         }
     }
 }

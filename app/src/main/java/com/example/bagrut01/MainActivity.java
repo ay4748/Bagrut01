@@ -1,7 +1,9 @@
 package com.example.bagrut01;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -82,4 +84,15 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+    protected void onActivityResult(int source, int result, @Nullable Intent data_back){
+        super.onActivityResult(source, result, data_back);
+        if (source == REQUEST_CODE) {
+            if (result == Activity.RESULT_OK) {
+                if (data_back != null) {
+
+                }
+            }
+        }
+    }
+
 }
