@@ -15,14 +15,17 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class SecondScreen extends AppCompatActivity {
     EditText eTUnitsMath,eTGradeMath,eTUnitsEng,eTGradeEng,eTSubjectFirst,eTGradeFirst,eTSubjectSecond,eTSecondGrade,eTSecondHagSub, eTSecHagGrade;
-    RadioButton rB5or0first, rB5or0Second;
+    RadioButton rB5or0first, rB5or0Second,rB5or1Second;
     int gradeHebrew, gradeSafrut, gradeHistory, gradeEzrahut, gradeBible, gradeMath, gradeEnglish, gradeFirst, gradeSecond, gradeThird;
     int unitsMath, unitsEngish;
     Intent gi;
     String name, subjectFirst, subjectSecond, subjectThird;
-
     int numHug = 1;
     int RESULT_OK = 369;
+    String dodge = null;
+    boolean s5or1;
+    boolean s5or0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,53 @@ public class SecondScreen extends AppCompatActivity {
         gradeHistory = gi.getIntExtra("History", 1);
         gradeEzrahut = gi.getIntExtra("Ezrahut", 1);
         gradeBible = gi.getIntExtra("Bible", 1);
-        //name = gi.getStringExtra("Name", "");
+        name = gi.getStringExtra("Name");
+
+        gradeMath = gi.getIntExtra("mathGrade", -1);
+        gradeEnglish = gi.getIntExtra("englishGrade", -1);
+        unitsEngish = gi.getIntExtra("englishUnits",-1);
+        unitsMath = gi.getIntExtra("mathUnits", -1);
+
+        subjectFirst = gi.getStringExtra("subjectFirst");
+        subjectSecond  = gi.getStringExtra("subjectSecond");
+        subjectThird = gi.getStringExtra("subjectThird");
+
+
+        gradeFirst = gi.getIntExtra("gradeFirst", -1);
+        gradeSecond = gi.getIntExtra("gradeSecond", -1);
+        gradeThird = gi.getIntExtra("gradeThird", -1);
+
+        numHug = gi.getIntExtra("numHug", 1);
+        s5or1 = gi.getBooleanExtra("s5or1", true);
+        s5or0 = gi.getBooleanExtra("s5or0", true);
+
+        if(!s5or1)
+        {
+            rB5or0first.setChecked(true);
+            eTSecHagGrade.setVisibility(View.INVISIBLE);
+            rB5or0first.setVisibility(View.INVISIBLE);
+            rB5or0Second.setVisibility(View.INVISIBLE);
+            eTSecondHagSub.setVisibility(View.INVISIBLE);
+
+        }
+        if(!s5or0)
+        {
+            rB5or0Second.setChecked(true);
+            eTSecondHagSub.setVisibility(View.INVISIBLE);
+            eTSecHagGrade.setVisibility(View.INVISIBLE);
+        }
+
+        checkminus(eTGradeMath,gradeMath);
+        checkminus(eTGradeEng, gradeEnglish);
+        checkminus(eTUnitsMath,unitsMath);
+        checkminus(eTUnitsEng,unitsEngish);
+        checkminus(eTGradeFirst, gradeFirst);
+        checkminus(eTSecondGrade,gradeSecond);
+        checkminus(eTSecHagGrade, gradeThird);
+
+        eTSubjectFirst.setText(subjectFirst);
+        eTSubjectSecond.setText(subjectSecond);
+        eTSecondHagSub.setText(subjectThird);
 
     }
 
@@ -56,6 +105,7 @@ public class SecondScreen extends AppCompatActivity {
 
         rB5or0first = findViewById(R.id.rB5or0first);
         rB5or0Second = findViewById(R.id.rB5or0Second);
+        rB5or1Second = findViewById(R.id.rB5or1Second);
     }
 
     public void clickedMavoMadaim(View view)
@@ -68,6 +118,8 @@ public class SecondScreen extends AppCompatActivity {
         eTSecHagGrade.setText("1");
         eTSecondHagSub.setText("dodge");
         numHug = 1;
+        s5or1 = false;
+
     }
 
     public void clickedhagshni(View view)
@@ -80,7 +132,10 @@ public class SecondScreen extends AppCompatActivity {
         eTSecHagGrade.setText("");
         eTSecondHagSub.setText("");
         numHug = 2;
+        s5or1 = true;
+
     }
+
 
     public void clickedNothird(View view)
     {
@@ -90,8 +145,9 @@ public class SecondScreen extends AppCompatActivity {
         eTSecondHagSub.setText("dodge");
         eTSecHagGrade.setText("1");
 
-
         numHug = 2;
+        s5or0 = false;
+
 
     }
 
@@ -102,6 +158,8 @@ public class SecondScreen extends AppCompatActivity {
         eTSecondHagSub.setText("");
         eTSecHagGrade.setText("");
         numHug = 3;
+        s5or0 = true;
+
     }
 
     public static boolean containsOnlyLetters(String str) {
@@ -162,8 +220,8 @@ public class SecondScreen extends AppCompatActivity {
         return true;
     }
 
-    public void clickedGoToFirst(View view)
-    {
+
+    public void goBackToFirst(View view) {
         if(checkInput()) {
             gi.putExtra("mathGrade", gradeMath);
             gi.putExtra("englishGrade", gradeEnglish);
@@ -177,12 +235,26 @@ public class SecondScreen extends AppCompatActivity {
             gi.putExtra("gradeFirst", gradeFirst);
             gi.putExtra("gradeSecond", gradeSecond);
             gi.putExtra("gradeThird", gradeThird);
+            gi.putExtra("s5or1",s5or1);
+            gi.putExtra("s5or0",s5or0);
 
             gi.putExtra("numHug", numHug);
 
             setResult(RESULT_OK,gi);
             finish();
 
+        }
+    }
+
+    public static void checkminus(EditText et, int grade)
+    {
+        if(grade == -1)
+        {
+            et.setText("");
+        }
+        else
+        {
+            et.setText(grade + "");
         }
     }
 }
