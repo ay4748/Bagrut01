@@ -371,7 +371,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView42"
+            android:id="@+id/tVFirstSubject"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -421,7 +421,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView46"
+            android:id="@+id/tVSecondSubject"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -472,7 +472,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView50"
+            android:id="@+id/tVThirdSubject"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -554,14 +554,14 @@
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="3" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Prev" />
 
         <Space
             android:layout_width="0dp"

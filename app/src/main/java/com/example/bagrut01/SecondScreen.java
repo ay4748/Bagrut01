@@ -178,6 +178,15 @@ public class SecondScreen extends AppCompatActivity {
         if(checkInput())
         {
             Intent dodge = new Intent(this,ThirdScreen.class);
+            dodge.putExtra("subjectFirst",subjectFirst);
+            dodge.putExtra("subjectSecond", subjectSecond);
+            dodge.putExtra("subjectThird", subjectThird);
+
+            dodge.putExtra("gradeHebrew",gradeHebrew);
+            dodge.putExtra("gradeSafrut",gradeSafrut);
+            dodge.putExtra("gradeHistory",gradeHistory);
+            dodge.putExtra("gradeEzrahut",gradeEzrahut);
+            dodge.putExtra("gradeBible",gradeBible);
             startActivity(dodge);
         }
     }
