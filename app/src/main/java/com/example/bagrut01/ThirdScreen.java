@@ -26,6 +26,7 @@ public class ThirdScreen extends AppCompatActivity {
     TextView tVGradeSecond, tVGradeSecondWith;
     TextView tVGradeThird, tVGradeThirdWith;
     TextView tVFirstSubject, tVSecondSubject, tVThirdSubject;
+    TextView tV5or0, tV5or1;
     Intent dodging;
 
     int gradeHebrew, gradeSafrut, gradeHistory, gradeEzrahut, gradeBible, gradeMath, gradeEnglish, gradeFirst, gradeSecond, gradeThird;
@@ -87,10 +88,48 @@ public class ThirdScreen extends AppCompatActivity {
         tVGradeBibleWith.setText(gradeBible + "");
         sum += gradeBible;
 
+        tVGradeMath.setText(gradeMath + "");
+        if(unitsMath ==4)
+        {
+            gradeMath+=15;
+        }
+        else if(unitsMath == 5)
+        {
+            gradeMath += 30;
+        }
+        tVGradeMathWith.setText(gradeMath + "");
+        tVUnitsEnglish.setText(unitsEnglish + "");
+        tVUnitsMath.setText(unitsMath + "");
 
+        tVGradeEnglish.setText(gradeEnglish + "");
+        if(unitsEnglish ==4)
+        {
+            gradeEnglish+=15;
+        }
+        else if(unitsEnglish == 5)
 
+        {
+            gradeEnglish += 30;
+        }
+        tVGradeEngWith.setText(gradeEnglish + "");
 
+        if(numHug == 1)
+        {
+            tVGradeThird.setVisibility(View.INVISIBLE);
+            tVGradeThirdWith.setVisibility(View.INVISIBLE);
+            tVThirdSubject.setVisibility(View.INVISIBLE);
+            tV5or0.setVisibility(View.INVISIBLE);
+            tV5or1.setText("1");
 
+        }
+        else if(numHug == 2)
+        {
+            tVGradeThird.setVisibility(View.INVISIBLE);
+            tVGradeThirdWith.setVisibility(View.INVISIBLE);
+            tVThirdSubject.setVisibility(View.INVISIBLE);
+            tV5or0.setVisibility(View.INVISIBLE);
+            tV5or1.setText("5");
+        }
 
 
     }
@@ -134,6 +173,8 @@ public class ThirdScreen extends AppCompatActivity {
         tVSecondSubject = findViewById(R.id.tVSecondSubject);
         tVThirdSubject = findViewById(R.id.tVThirdSubject);
 
+        tV5or0 = findViewById(R.id.tV5or0);
+        tV5or1 = findViewById(R.id.tV5or1);
 
 
     }

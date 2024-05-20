@@ -187,6 +187,11 @@ public class SecondScreen extends AppCompatActivity {
             dodge.putExtra("gradeHistory",gradeHistory);
             dodge.putExtra("gradeEzrahut",gradeEzrahut);
             dodge.putExtra("gradeBible",gradeBible);
+
+            dodge.putExtra("mathGrade",gradeMath);
+            dodge.putExtra("englishGrade",gradeEnglish);
+            dodge.putExtra("mathUnits", unitsMath);
+            dodge.putExtra("englishUnits", unitsEngish);
             startActivity(dodge);
         }
     }
