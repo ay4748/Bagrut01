@@ -533,6 +533,42 @@
         android:layout_height="wrap_content"
         android:text="avg1" />
 
+    <TextView
+        android:id="@+id/tVavg2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="avg2" />
+
+    <TextView
+        android:id="@+id/tVAvg3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="avg3" />
+
+    <TextView
+        android:id="@+id/tVAvg4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="avg4" />
+
+    <TextView
+        android:id="@+id/tVAvg5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="avg5" />
+
+    <TextView
+        android:id="@+id/tVAvg6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="avg6" />
+
+    <TextView
+        android:id="@+id/tVAvg7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="avg7" />
+
     <Space
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -567,6 +603,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="goBack"
             android:text="Prev" />
 
         <Space

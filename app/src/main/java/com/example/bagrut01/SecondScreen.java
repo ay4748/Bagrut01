@@ -202,6 +202,7 @@ public class SecondScreen extends AppCompatActivity {
             dodge.putExtra("gradeThird", gradeThird);
             dodge.putExtra("numHug",numHug);
             dodge.putExtra("is3",hug3);
+            dodge.putExtra("name",name) ;
             startActivity(dodge);
         }
     }
@@ -263,6 +264,7 @@ public class SecondScreen extends AppCompatActivity {
             gi.putExtra("s5or0",s5or0);
 
             gi.putExtra("numHug", numHug);
+
 
             setResult(RESULT_OK,gi);
             finish();

@@ -28,8 +28,9 @@ public class ThirdScreen extends AppCompatActivity {
     TextView tVFirstSubject, tVSecondSubject, tVThirdSubject;
     TextView tV5or0, tV5or1;
     TextView tVName;
-    TextView tVBestAvg, tVAvg1;
+    TextView tVBestAvg, tVAvg1, tVAvg2,tVAvg3, tVAvg4, tVAvg5, tVAvg6, tVAvg7;
     Intent dodging;
+
 
     int gradeHebrew, gradeSafrut, gradeHistory, gradeEzrahut, gradeBible, gradeMath, gradeEnglish, gradeFirst, gradeSecond, gradeThird;
     int unitsMath, unitsEnglish;
@@ -72,12 +73,15 @@ public class ThirdScreen extends AppCompatActivity {
 
         numHug = dodging.getIntExtra("numHug", 1);
         is3 = dodging.getBooleanExtra("is3", true);
+        name = dodging.getStringExtra("name");
 
 
-        tVName.setText(numHug + "");
+        tVName.setText("Hello, " + name + " this is your bagrut: ");
         tVFirstSubject.setText(subjectFirst);
         tVSecondSubject.setText(subjectSecond);
         tVThirdSubject.setText(subjectThird);
+
+
 
         tVGradeHebrew.setText(gradeHebrew + "");
         tVGradeHebrewWith.setText(gradeHebrew + "");
@@ -169,18 +173,67 @@ public class ThirdScreen extends AppCompatActivity {
             tVGradeSecondWith.setText(gradeSecond + "");
         }
 
-
+        avg = gradeHebrew * 2 + gradeSafrut * 2 + gradeHistory * 2 + gradeEzrahut * 2 + gradeBible * 2 +  gradeMath * unitsMath + gradeEnglish * unitsEnglish;
         if(numHug == 1 && !is3)
         {
             sumUnits+=6;
-            avg = gradeHebrew * 2 + gradeSafrut * 2 + gradeHistory * 2 + gradeEzrahut * 2 + gradeBible * 2 + gradeFirst * 5 + gradeMath * unitsMath + gradeEnglish * unitsEnglish + gradeFirst * 5 + gradeSecond;
+            avg +=gradeSecond + gradeFirst * 5;
             avg = avg/sumUnits;
             tVBestAvg.setText("Your best average is " + avg);
             tVAvg1.setText(sumUnits +"");
+
+            tVAvg2.setVisibility(View.GONE);
+            tVAvg3.setVisibility(View.GONE);
+            tVAvg4.setVisibility(View.GONE);
+            tVAvg5.setVisibility(View.GONE);
+            tVAvg6.setVisibility(View.GONE);
+            tVAvg7.setVisibility(View.GONE);
+
         }
+        else if(numHug == 2)
+        {
+            float[] arr1 = new float[3];
+            arr1[0] = (avg + gradeFirst * 5 + gradeSecond *5) / (sumUnits + 10);
+            arr1[1] = (avg + gradeFirst * 5) / (sumUnits + 5);
+            arr1[2] = (avg + gradeSecond * 5) / (sumUnits + 5);
 
+            selectionSort(arr1);
+            tVAvg1.setText(arr1[0] + "");
+            tVAvg2.setText(arr1[1] + "");
+            tVAvg3.setText(arr1[2] + "");
 
+            tVBestAvg.setText("Your best average is:" + arr1[2]);
 
+            tVAvg4.setVisibility(View.GONE);
+            tVAvg5.setVisibility(View.GONE);
+            tVAvg6.setVisibility(View.GONE);
+            tVAvg7.setVisibility(View.GONE);
+
+        }
+        else if(numHug == 3 || is3)
+        {
+            float[] arr1 = new float[7];
+            arr1[0] = (avg + gradeFirst * 5 + gradeSecond *5 + gradeThird * 5) / (sumUnits + 15);
+            arr1[1] = (avg + gradeFirst * 5 ) / (sumUnits + 5);
+            arr1[2] = (avg + gradeSecond *5) / (sumUnits + 5);
+            arr1[3] = (avg + gradeThird * 5) / (sumUnits + 5);
+            arr1[4] = (avg + gradeFirst * 5 + gradeSecond *5) / (sumUnits + 10);
+            arr1[5] = (avg + gradeFirst * 5 + gradeThird *5) / (sumUnits + 10);
+            arr1[6] = (avg + gradeSecond * 5 + gradeThird *5) / (sumUnits + 10);
+
+            selectionSort(arr1);
+
+            tVAvg1.setText(arr1[0] + "");
+            tVAvg2.setText(arr1[1] + "");
+            tVAvg3.setText(arr1[2] + "");
+            tVAvg4.setText(arr1[3] + "");
+            tVAvg5.setText(arr1[4] + "");
+            tVAvg6.setText(arr1[5] + "");
+            tVAvg7.setText(arr1[6] + "");
+
+            tVBestAvg.setText("Your best Average is: " + arr1[6]);
+
+        }
 
     }
 
@@ -229,5 +282,32 @@ public class ThirdScreen extends AppCompatActivity {
 
         tVBestAvg = findViewById(R.id.tVBestAvg);
         tVAvg1 = findViewById(R.id.tVAvg1);
+        tVAvg2 = findViewById(R.id.tVavg2);
+        tVAvg3 = findViewById(R.id.tVAvg3);
+        tVAvg4 = findViewById(R.id.tVAvg4);
+        tVAvg5 = findViewById(R.id.tVAvg5);
+        tVAvg6 = findViewById(R.id.tVAvg6);
+        tVAvg7 = findViewById(R.id.tVAvg7);
+
+    }
+
+    void selectionSort(float[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
+            int min = i;
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[j] < a[min]) {
+                    min = j;
+                }
+            }
+            if (i != min) {
+                float swap = a[i];
+                a[i] = a[min];
+                a[min] = swap;
+            }
+        }
+    }
+
+    public void goBack(View view) {
+        finish();
     }
 }
