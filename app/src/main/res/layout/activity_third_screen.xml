@@ -527,13 +527,11 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tVAvg1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:orientation="horizontal">
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:text="avg1" />
 
     <Space
         android:layout_width="wrap_content"
@@ -541,7 +539,7 @@
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/tVBestAvg"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
