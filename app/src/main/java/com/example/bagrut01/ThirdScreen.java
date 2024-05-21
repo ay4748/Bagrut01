@@ -27,12 +27,15 @@ public class ThirdScreen extends AppCompatActivity {
     TextView tVGradeThird, tVGradeThirdWith;
     TextView tVFirstSubject, tVSecondSubject, tVThirdSubject;
     TextView tV5or0, tV5or1;
+    TextView tVName;
     Intent dodging;
 
     int gradeHebrew, gradeSafrut, gradeHistory, gradeEzrahut, gradeBible, gradeMath, gradeEnglish, gradeFirst, gradeSecond, gradeThird;
     int unitsMath, unitsEnglish;
     String name, subjectFirst, subjectSecond, subjectThird;
     int numHug, sum = 0, sumUnits= 10;
+    boolean is3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,9 @@ public class ThirdScreen extends AppCompatActivity {
         setContentView(R.layout.activity_third_screen);
 
         initViews();
+
+
+
         dodging = getIntent();
         gradeHebrew = dodging.getIntExtra("gradeHebrew", 1);
         gradeSafrut = dodging.getIntExtra("gradeSafrut", 1);
@@ -63,7 +69,10 @@ public class ThirdScreen extends AppCompatActivity {
         gradeThird = dodging.getIntExtra("gradeThird", 1);
 
         numHug = dodging.getIntExtra("numHug", 1);
+        is3 = dodging.getBooleanExtra("is3", true);
 
+
+        tVName.setText(numHug + "");
         tVFirstSubject.setText(subjectFirst);
         tVSecondSubject.setText(subjectSecond);
         tVThirdSubject.setText(subjectThird);
@@ -113,6 +122,9 @@ public class ThirdScreen extends AppCompatActivity {
         }
         tVGradeEngWith.setText(gradeEnglish + "");
 
+        tVGradeFirst.setText(gradeFirst+ "");
+        gradeFirst += 30;
+        tVGradeFirstWith.setText(gradeFirst + "");
         if(numHug == 1)
         {
             tVGradeThird.setVisibility(View.INVISIBLE);
@@ -120,6 +132,8 @@ public class ThirdScreen extends AppCompatActivity {
             tVThirdSubject.setVisibility(View.INVISIBLE);
             tV5or0.setVisibility(View.INVISIBLE);
             tV5or1.setText("1");
+            tVGradeSecond.setText(gradeSecond + "");
+            tVGradeSecondWith.setText(gradeSecond + "");
 
         }
         else if(numHug == 2)
@@ -129,7 +143,30 @@ public class ThirdScreen extends AppCompatActivity {
             tVThirdSubject.setVisibility(View.INVISIBLE);
             tV5or0.setVisibility(View.INVISIBLE);
             tV5or1.setText("5");
+            tVGradeSecond.setText(gradeSecond + "");
+            gradeSecond += 30;
+            tVGradeSecondWith.setText(gradeSecond + "");
         }
+        if(is3)
+        {
+            tV5or0.setText("5");
+            tVGradeThird.setText(gradeThird + "");
+            gradeThird+=30;
+            tVGradeThirdWith.setText(gradeThird + "");
+            tVGradeThird.setVisibility(View.VISIBLE);
+            tVGradeThirdWith.setVisibility(View.VISIBLE);
+            tVThirdSubject.setVisibility(View.VISIBLE);
+            tV5or0.setVisibility(View.VISIBLE);
+            tV5or1.setText("5");
+            tVGradeSecond.setText(gradeSecond + "");
+            gradeSecond += 30;
+            tVGradeSecondWith.setText(gradeSecond + "");
+        }
+
+
+
+
+
 
 
     }
@@ -175,6 +212,7 @@ public class ThirdScreen extends AppCompatActivity {
 
         tV5or0 = findViewById(R.id.tV5or0);
         tV5or1 = findViewById(R.id.tV5or1);
+        tVName = findViewById(R.id.tVName);
 
 
     }

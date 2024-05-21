@@ -20,11 +20,12 @@ public class SecondScreen extends AppCompatActivity {
     int unitsMath, unitsEngish;
     Intent gi;
     String name, subjectFirst, subjectSecond, subjectThird;
-    int numHug = 1;
+    int numHug = 3;
     int RESULT_OK = 369;
-    String dodge = null;
+
     boolean s5or1;
     boolean s5or0;
+    boolean hug3 = true;
 
 
     @Override
@@ -119,6 +120,7 @@ public class SecondScreen extends AppCompatActivity {
         eTSecondHagSub.setText("dodge");
         numHug = 1;
         s5or1 = false;
+        hug3 = false;
 
     }
 
@@ -133,6 +135,7 @@ public class SecondScreen extends AppCompatActivity {
         eTSecondHagSub.setText("");
         numHug = 2;
         s5or1 = true;
+        hug3 = false;
 
     }
 
@@ -147,6 +150,7 @@ public class SecondScreen extends AppCompatActivity {
 
         numHug = 2;
         s5or0 = false;
+        hug3 = false;
 
 
     }
@@ -192,6 +196,12 @@ public class SecondScreen extends AppCompatActivity {
             dodge.putExtra("englishGrade",gradeEnglish);
             dodge.putExtra("mathUnits", unitsMath);
             dodge.putExtra("englishUnits", unitsEngish);
+
+            dodge.putExtra("gradeFirst", gradeFirst);
+            dodge.putExtra("gradeSecond", gradeSecond);
+            dodge.putExtra("gradeThird", gradeThird);
+            dodge.putExtra("numHug",numHug);
+            dodge.putExtra("is3",hug3);
             startActivity(dodge);
         }
     }
